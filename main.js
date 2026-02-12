@@ -1,16 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const hasInactiveParam = params.has("inactive");
-  const inactiveKey = "isInactive";
 
   if (hasInactiveParam) {
-    localStorage.setItem(inactiveKey, "true");
-  } else {
-    localStorage.setItem(inactiveKey, "false");
-  }
-
-  const isInactive = localStorage.getItem(inactiveKey) === "true";
-  if (isInactive) {
     document.body.classList.add("maintenance");
     const banner = document.createElement("div");
     banner.className = "maintenance-banner";
