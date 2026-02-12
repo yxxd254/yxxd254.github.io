@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const inactiveParam = params.get("inactive");
+  const hasInactiveParam = params.has("inactive");
   const inactiveKey = "isInactive";
 
-  if (inactiveParam === "on") {
+  if (hasInactiveParam) {
     localStorage.setItem(inactiveKey, "true");
-  } else if (inactiveParam === "off") {
+  } else {
     localStorage.setItem(inactiveKey, "false");
   }
 
