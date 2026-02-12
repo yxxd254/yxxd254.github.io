@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const maintenanceParam = params.get("maintenance");
-  const maintenanceKey = "maintenanceMode";
+  const inactiveParam = params.get("inactive");
+  const inactiveKey = "isInactive";
 
-  if (maintenanceParam === "on") {
-    localStorage.setItem(maintenanceKey, "true");
-  } else if (maintenanceParam === "off") {
-    localStorage.setItem(maintenanceKey, "false");
+  if (inactiveParam === "on") {
+    localStorage.setItem(inactiveKey, "true");
+  } else if (inactiveParam === "off") {
+    localStorage.setItem(inactiveKey, "false");
   }
 
-  const isMaintenance = localStorage.getItem(maintenanceKey) === "true";
-  if (isMaintenance) {
+  const isInactive = localStorage.getItem(inactiveKey) === "true";
+  if (isInactive) {
     document.body.classList.add("maintenance");
     const banner = document.createElement("div");
     banner.className = "maintenance-banner";
