@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile | Blog Post</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const colorMap = {
+      'pink': 'primary',
+      'pink-light': 'primary-light',
+      'teal': 'accent',
+      'white': 'text',
+      'gray': 'text-muted'
+    };
+    marked.use({
+      extensions: [
+        {
+          name: "color",
+          level: "inline",
+          start(src) { return src.match(/:[\w-]+\[/)?.index; },
+          tokenizer(src) {
+            const match = src.match(/^:([\w-]+)\[(.+?)\]/);
+            if (!match) return;
+            const colorName = match[1];
+            if (!colorMap[colorName]) return;
+            const text = marked.parseInline(match[2]);
+            return { type: "color", raw: match[0], color: colorName, text: text };
+          },
+          renderer(token) {
+            return '<span style="color: var(--' + colorMap[token.color] + ')">' + token.text + '</span>';
+          },
+        },
+        {
+          name: "small",
+          level: "block",
+          start(src) { return src.indexOf("-#"); },
+          tokenizer(src) {
+            const match = src.match(/^-# (.+?)(?:\n|$)/);
+            if (!match) return;
+            const text = marked.parseInline(match[1]);
+            return { type: "small", raw: match[0], text: text };
+          },
+          renderer(token) {
+            return '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5em">' + token.text + '</p>';
+          },
+        },
+      ],
+    });
+  </script>
+</head>
+<body class="page">
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="navbar-inner">
+      <div class="navbar-brand">Seele / yx</div>
+      <div class="navbar-links">
+        <a class="navbar-link" href="index.html">Profile</a>
+        <a class="navbar-link" href="skills.html">Skills</a>
+        <a class="navbar-link" href="gaming.html">Gaming</a>
+        <a class="navbar-link is-active" href="blogs.html" aria-current="page">Blogs</a>
+        <a class="navbar-link" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero reveal">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 class="hero-title" id="post-title">Loading...</h1>
+          <p class="blog-date" id="post-date"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="card">
+          <div class="blog-post-body" id="post-body">
+            <p class="blog-loading">Loading post...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <a class="back-link" href="blogs.html">Back to Blogs</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">Seele / yx &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    async function loadPost() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
+      const titleEl = document.getElementById("post-title");
+      const dateEl = document.getElementById("post-date");
+      const bodyEl = document.getElementById("post-body");
+
+      if (!slug) {
+        titleEl.textContent = "Post not found";
+        bodyEl.innerHTML = '<p>No post specified.</p>';
+        return;
+      }
+
+      try {
+        const [manifestRes, mdRes] = await Promise.all([
+          fetch("posts/manifest.json"),
+          fetch("posts/" + slug + ".md"),
+        ]);
+
+        if (!mdRes.ok) throw new Error("Post not found");
+
+        const manifest = await manifestRes.json();
+        const post = manifest.find((p) => p.slug === slug);
+        const md = await mdRes.text();
+
+        if (post) {
+          titleEl.textContent = post.title;
+          document.title = "Profile | " + post.title;
+          dateEl.textContent = post.date;
+        } else {
+          titleEl.textContent = slug;
+          dateEl.textContent = "";
+        }
+
+        bodyEl.innerHTML = marked.parse(md);
+      } catch {
+        titleEl.textContent = "Post not found";
+        dateEl.textContent = "";
+        bodyEl.innerHTML = '<p>Could not load this post.</p>';
+      }
+    }
+    loadPost();
+  </script>
+</body>
+</html>

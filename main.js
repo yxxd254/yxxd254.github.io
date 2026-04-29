@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="maintenance-text">Seele is inactive from the internet for now.</p>
       </div>
     `;
-    const header = document.querySelector("header");
-    if (header && header.parentNode) {
-      header.parentNode.insertBefore(banner, header.nextSibling);
+    const navbar = document.querySelector(".navbar");
+    if (navbar && navbar.parentNode) {
+      navbar.parentNode.insertBefore(banner, navbar.nextSibling);
     } else {
       document.body.prepend(banner);
     }

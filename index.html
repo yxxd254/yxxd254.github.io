@@ -1,83 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile | Overview</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="main.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile | Seele / yx</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
 </head>
-<body class="page page-home">
-  <header class="header">
-    <div class="container wrapper">
-      <div class="brand">Seele / yx</div>
-      <nav class="nav" aria-label="Primary">
-        <a class="link is-active" href="index.html" aria-current="page">Overview</a>
-        <a class="link" href="profile.html">Profile</a>
-        <a class="link" href="skills.html">Skills</a>
-        <a class="link" href="gaming.html">Gaming</a>
-        <a class="link" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero reveal">
-      <div class="container">
-        <div class="content">
-          <h1 class="title">Overview</h1>
-          <p class="subtitle">A really short profile summary.</p>
-          <div class="row">
-            <span class="badge">Vibe Coder</span>
-            <span class="badge badge-ghost">Weeb</span>
-          </div>
-          <div class="inline-card" role="group" aria-label="Local time">
-            <span class="label">Local Time (GMT+8)</span>
-            <span class="value" id="local-time">--:--:--</span>
-          </div>
+<body class="page">
+
+    <nav class="navbar" aria-label="Primary">
+        <div class="navbar-inner">
+            <div class="navbar-brand">Seele / yx</div>
+            <div class="navbar-links">
+                <a class="navbar-link is-active" href="index.html" aria-current="page">Profile</a>
+                <a class="navbar-link" href="skills.html">Skills</a>
+                <a class="navbar-link" href="gaming.html">Gaming</a>
+                <a class="navbar-link" href="contact.html">Contact</a>
+            </div>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <section class="section reveal">
-      <div class="container">
-        <div class="body card terminal">
-          <div class="header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="title">README.md</span>
-          </div>
-          <pre class="body"><code># Overview
+    <main>
+        <section class="hero reveal">
+            <div class="container">
+                <div class="hero-inner">
+                    <h1 class="hero-title"> My Profile <span class="hero-comment">//</span></h1>
+                    <p class="hero-subtitle">A noob.</p>
+                </div>
+            </div>
+        </section>
 
-Call me Seele / yx.
+        <section class="section reveal">
+            <div class="container">
+                <article class="card profile-card">
+                    <p class="profile-kicker">README.md</p>
+                    <div class="profile-time" role="group" aria-label="Local time">
+                        <br>
+                        <span class="label">Local Time (GMT+8)</span>
+                        <span class="value" id="local-time">--:--:--</span>
+                    </div>
+                    <h2 class="profile-name">Seele / yx</h2>
 
-See the full profile for more details.
-</code></pre>
-          <a class="pill link" href="profile.html">Open full profile</a>
+                    <div class="row">
+                        <span class="badge">Vibe Coder</span>
+                        <span class="badge badge-alt">Weeb</span>
+                    </div>
+
+                    <div class="profile-meta">
+                        <div class="meta-row">
+                            <span class="meta-label">Timezone</span>
+                            <span class="meta-value">GMT+8</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">Identity</span>
+                            <span class="meta-value">Under 18, Student</span>
+                        </div>
+                    </div>
+
+                    <hr class="profile-divider" />
+
+                    <div class="profile-columns">
+                        <div class="profile-section">
+                            <h3>Communication</h3>
+                            <p>I may not reply to a simple "hi" or "hello" without any additional message. Please say
+                                what you want directly. There is no need and no point in waiting for my response before
+                                you continue.</p>
+                            <a class="pill pill-alt" href="https://nohello.net/" target="_blank"
+                                rel="noreferrer">nohello.net</a>
+                        </div>
+
+                        <div>
+                            <div class="profile-section">
+                                <h3>About</h3>
+                                <ul class="profile-list">
+                                    <li>Do not call me Seal.</li>
+                                    <li>Introvert (trust)</li>
+                                </ul>
+                            </div>
+
+                            <div class="profile-section">
+                                <h3>Setup</h3>
+                                <p>Windows 11 (main) &middot; Arch Linux (dual boot, SSD)</p>
+                            </div>
+                        </div>
+
+                        <hr class="profile-divider" />
+
+                        <div class="profile-section" style="grid-column: 1 / -1;">
+                            <h3>Also...</h3>
+                            <ul class="profile-list">
+                                <li>The theme of this website came from the anime characters I like.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Seele / yx &copy; 2026</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="section reveal">
-      <div class="container">
-        <h2 class="title">Peak</h2>
-        <div class="body grid">
-          <figure class="card-figure card-shorekeeper">
-            <figcaption>Shorekeeper</figcaption>
-          </figure>
-          <figure class="card-figure card-ema">
-            <figcaption>Sakuraba Ema</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="note"></div>
-    </div>
-  </footer>
 </body>
+
 </html>

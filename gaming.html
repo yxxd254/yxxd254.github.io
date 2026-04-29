@@ -9,44 +9,47 @@
     <script src="main.js" defer></script>
 </head>
 
-<body class="page page-gaming">
-    <header class="header">
-        <div class="container wrapper">
-            <div class="brand">Seele / yx</div>
-            <nav class="nav" aria-label="Primary">
-                <a class="link" href="index.html">Overview</a>
-                <a class="link" href="profile.html">Profile</a>
-                <a class="link" href="skills.html">Skills</a>
-                <a class="link is-active" href="gaming.html" aria-current="page">Gaming</a>
-                <a class="link" href="contact.html">Contact</a>
-            </nav>
+<body class="page">
+    <nav class="navbar" aria-label="Primary">
+        <div class="navbar-inner">
+            <span class="navbar-brand">Seele / yx</span>
+            <div class="navbar-links">
+        <a class="navbar-link" href="index.html">Profile</a>
+        <a class="navbar-link" href="skills.html">Skills</a>
+        <a class="navbar-link is-active" href="gaming.html" aria-current="page">Gaming</a>
+        <a class="navbar-link" href="contact.html">Contact</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <main>
         <section class="hero reveal">
             <div class="container">
-                <div class="content">
-                    <h1 class="title">Gaming</h1>
-                    <p class="subtitle">Games I play</p>
+                <div class="hero-inner">
+                    <h1 class="hero-title">Gaming</h1>
+                    <p class="hero-subtitle">Games I play</p>
                 </div>
             </div>
         </section>
 
         <section class="section reveal">
             <div class="container">
-                <h2 class="title">Games</h2>
-                <div class="body grid">
+                <h2 class="section-title">Games</h2>
+                <div class="grid">
                     <article class="card">
                         <div class="card-header">
                             <h3 class="card-title">Roblox</h3>
-                            <span class="chip">Main</span>
+                            <span class="chip chip-primary">Main</span>
                         </div>
                         <p class="card-subtitle">These games do not interest me anymore...</p>
 
                         <div class="item-row">
+                            <span class="item-label">JOMA</span>
+                            <span class="item-detail">Main</span>
+                        </div>
+                        <div class="item-row">
                             <span class="item-label">Kohls Admin House X</span>
-                            <span class="item-detail">Active</span>
+                            <span class="item-detail">Inactive</span>
                         </div>
                         <div class="item-row">
                             <span class="item-label">Kohls Admin House</span>
@@ -72,15 +75,19 @@
                     <article class="card">
                         <div class="card-header">
                             <h3 class="card-title">Minecraft</h3>
-                            <span class="chip">Active</span>
+                            <span class="chip chip-accent">occasionally</span>
                         </div>
-                        <p class="card-subtitle">In a lot of random areas.</p>
+                        <p class="card-subtitle">The most random things...</p>
+                        <div class="item-row">
+                            <span class="item-label">Parkour</span>
+                            <span class="item-detail">New</span>
+                        </div>
                         <div class="item-row">
                             <span class="item-label">Glitching</span>
                             <span class="item-detail">A bit of knowledge</span>
                         </div>
                         <div class="item-row">
-                            <span class="item-label">Redstoning</span>
+                            <span class="item-label">Redstone</span>
                             <span class="item-detail">I suck</span>
                         </div>
                         <div class="item-row">
@@ -96,11 +103,24 @@
             </div>
         </section>
 
+        <section class="section reveal">
+            <div class="container">
+                <h2 class="section-title">Peak</h2>
+                <div class="grid">
+                    <figure class="card-figure card-shorekeeper">
+                        <figcaption>Shorekeeper</figcaption>
+                    </figure>
+                    <figure class="card-figure card-ema">
+                        <figcaption>Sakuraba Ema</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="note"></div>
+            <p class="footer-text">Seele / yx &copy; 2026</p>
         </div>
     </footer>
 </body>
