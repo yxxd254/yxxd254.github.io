@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile | Blogs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="page">
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="navbar-inner">
+      <div class="navbar-brand">Seele / yx</div>
+      <div class="navbar-links">
+        <a class="navbar-link" href="index.html">Profile</a>
+        <a class="navbar-link" href="skills.html">Skills</a>
+        <a class="navbar-link" href="gaming.html">Gaming</a>
+        <a class="navbar-link is-active" href="blogs.html" aria-current="page">Blogs</a>
+        <a class="navbar-link" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero reveal">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 class="hero-title">Blogs</h1>
+          <p class="hero-subtitle">Thoughts and stuff.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="card">
+          <div class="blog-list" id="blog-list">
+            <p class="blog-loading">Loading posts...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">Seele / yx &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    async function loadBlogList() {
+      const container = document.getElementById("blog-list");
+      try {
+        const res = await fetch("posts/manifest.json");
+        if (!res.ok) throw new Error("Failed to load manifest");
+        const posts = await res.json();
+        if (!posts.length) {
+          container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
+          return;
+        }
+        posts.sort((a, b) => b.date.localeCompare(a.date));
+        container.innerHTML = posts
+          .map(
+            (post) => `
+            <a class="blog-card" href="post.html?slug=${encodeURIComponent(post.slug)}">
+              <div class="blog-card-header">
+                <span class="blog-date">${post.date}</span>
+              </div>
+              <h3 class="blog-card-title">${post.title}</h3>
+              <p class="blog-card-desc">${post.description}</p>
+            </a>
+          `
+          )
+          .join("");
+      } catch {
+        container.innerHTML = '<p class="blog-empty">Could not load posts.</p>';
+      }
+    }
+    loadBlogList();
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const hasInactiveParam = params.has("inactive");
+
+  if (hasInactiveParam) {
+    document.body.classList.add("maintenance");
+    const banner = document.createElement("div");
+    banner.className = "maintenance-banner";
+    banner.setAttribute("role", "status");
+    banner.innerHTML = `
+      <div class="container maintenance-content">
+        <span class="maintenance-pill">Maintenance</span>
+        <p class="maintenance-text">Seele is inactive from the internet for now.</p>
+      </div>
+    `;
+    const navbar = document.querySelector(".navbar");
+    if (navbar && navbar.parentNode) {
+      navbar.parentNode.insertBefore(banner, navbar.nextSibling);
+    } else {
+      document.body.prepend(banner);
+    }
+  }
+
+  const revealElements = Array.from(document.querySelectorAll(".reveal"));
+  if (revealElements.length) {
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, activeObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              activeObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+    }
+  }
+
+  const timeNode = document.getElementById("local-time");
+  if (timeNode) {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Singapore",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+    const updateTime = () => {
+      timeNode.textContent = formatter.format(new Date());
+    };
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  }
+});
