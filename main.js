@@ -1,61 +1,138 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const hasInactiveParam = params.has("inactive");
+/* ═══════════════════════════════════════════
+   Seele / yx — Resonator
+   Shell behaviour: clock, bar state, reveals, maintenance
+   ═══════════════════════════════════════════ */
 
-  if (hasInactiveParam) {
-    document.body.classList.add("maintenance");
-    const banner = document.createElement("div");
-    banner.className = "maintenance-banner";
-    banner.setAttribute("role", "status");
-    banner.innerHTML = `
-      <div class="container maintenance-content">
-        <span class="maintenance-pill">Maintenance</span>
-        <p class="maintenance-text">Seele is inactive from the internet for now.</p>
-      </div>
-    `;
-    const navbar = document.querySelector(".navbar");
-    if (navbar && navbar.parentNode) {
-      navbar.parentNode.insertBefore(banner, navbar.nextSibling);
-    } else {
-      document.body.prepend(banner);
+(() => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── local time (GMT+8) ─────────────────── */
+  const clockFormatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Singapore",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+
+  const clocks = Array.from(document.querySelectorAll("[data-clock]"));
+  const dates = Array.from(document.querySelectorAll("[data-date]"));
+  let clockTimer = null;
+
+  const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Singapore",
+    weekday: "short",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  const writeDate = () => {
+    const parts = dateFormatter.formatToParts(new Date());
+    const get = (type) => {
+      const part = parts.find((item) => item.type === type);
+      return part ? part.value : "";
+    };
+    const value =
+      get("day") + "-" + get("month") + "-" + get("year") + " · " + get("weekday").toUpperCase();
+    dates.forEach((node) => {
+      node.textContent = value;
+    });
+  };
+
+  const writeClock = () => {
+    const value = clockFormatter.format(new Date());
+    clocks.forEach((node) => {
+      node.textContent = value;
+    });
+    if (dates.length) {
+      writeDate();
     }
+  };
+
+  const startClock = () => {
+    writeClock();
+    if (!clockTimer) {
+      clockTimer = window.setInterval(writeClock, 1000);
+    }
+  };
+
+  const stopClock = () => {
+    if (clockTimer) {
+      window.clearInterval(clockTimer);
+      clockTimer = null;
+    }
+  };
+
+  if (clocks.length) {
+    startClock();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopClock();
+      } else {
+        startClock();
+      }
+    });
+  } else if (dates.length) {
+    writeDate();
   }
 
-  const revealElements = Array.from(document.querySelectorAll(".reveal"));
-  if (revealElements.length) {
-    if ("IntersectionObserver" in window) {
+  /* ── bar state on scroll ────────────────── */
+  const setBarState = () => {
+    document.body.classList.toggle("scrolled", window.scrollY > 24);
+  };
+
+  setBarState();
+  window.addEventListener("scroll", setBarState, { passive: true });
+
+  /* ── reveal on scroll ───────────────────── */
+  const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+
+  if (revealItems.length) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-in"));
+    } else {
       const observer = new IntersectionObserver(
-        (entries, activeObserver) => {
+        (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              activeObserver.unobserve(entry.target);
+              entry.target.classList.add("is-in");
+              observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
       );
 
-      revealElements.forEach((element) => observer.observe(element));
-    } else {
-      revealElements.forEach((element) => element.classList.add("is-visible"));
+      revealItems.forEach((item) => {
+        item.classList.add("reveal-ready");
+        observer.observe(item);
+      });
     }
   }
 
-  const timeNode = document.getElementById("local-time");
-  if (timeNode) {
-    const formatter = new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Asia/Singapore",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
+  /* ── ?inactive maintenance strip ────────── */
+  if (new URLSearchParams(window.location.search).has("inactive")) {
+    const banner = document.createElement("div");
+    banner.className = "maintenance";
+    banner.setAttribute("role", "status");
+    banner.innerHTML =
+      '<div class="frame maintenance-inner">' +
+      '<span class="tag tag-gold">Maintenance</span>' +
+      "<p>Seele is inactive from the internet for now.</p>" +
+      "</div>";
 
-    const updateTime = () => {
-      timeNode.textContent = formatter.format(new Date());
+    document.body.insertBefore(banner, document.body.firstChild);
+    document.body.classList.add("has-maintenance");
+
+    const measure = () => {
+      document.documentElement.style.setProperty(
+        "--maint-h",
+        banner.offsetHeight + "px"
+      );
     };
 
-    updateTime();
-    setInterval(updateTime, 1000);
+    window.requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
   }
-});
+})();

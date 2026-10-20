@@ -1,113 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profile | Seele / yx</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Seele / yx — under 18, student, GMT+8. Vibe coder, weeb, DeepSeek devotee." />
+  <meta name="theme-color" content="#04070E" />
+  <title>Seele / yx — Profile</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
 </head>
+<body class="home" id="top">
+  <a class="skip" href="#dossier">Skip to content</a>
 
-<body class="page">
+  <header class="site-bar">
+    <div class="frame bar-inner">
+      <a class="brand" href="index.html"><span class="diamond" aria-hidden="true"></span>Seele / yx</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Profile</a>
+        <a href="setup.html">Setup</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="blogs.html">Blogs</a>
+      </nav>
+    </div>
+  </header>
 
-    <nav class="navbar" aria-label="Primary">
-        <div class="navbar-inner">
-            <div class="navbar-brand">Seele / yx</div>
-            <div class="navbar-links">
-                <a class="navbar-link is-active" href="index.html" aria-current="page">Profile</a>
-                <a class="navbar-link" href="skills.html">Skills</a>
-                <a class="navbar-link" href="gaming.html">Gaming</a>
-                <a class="navbar-link" href="contact.html">Contact</a>
-            </div>
+  <div class="hud" aria-hidden="true">
+    <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+  </div>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art">
+        <img
+          src="shorekeeper%20background.png"
+          alt="Shorekeeper from Wuthering Waves, reaching out against a field of blue stars"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="rail" aria-hidden="true">
+          <span class="rail-label">Profile</span>
+          <span class="rail-line"></span>
+          <span class="rail-ticks"></span>
         </div>
-    </nav>
 
-    <main>
-        <section class="hero reveal">
-            <div class="container">
-                <div class="hero-inner">
-                    <h1 class="hero-title"> My Profile <span class="hero-comment">//</span></h1>
-                    <p class="hero-subtitle">A noob.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section reveal">
-            <div class="container">
-                <article class="card profile-card">
-                    <p class="profile-kicker">README.md</p>
-                    <div class="profile-time" role="group" aria-label="Local time">
-                        <br>
-                        <span class="label">Local Time (GMT+8)</span>
-                        <span class="value" id="local-time">--:--:--</span>
-                    </div>
-                    <h2 class="profile-name">Seele / yx</h2>
-
-                    <div class="row">
-                        <span class="badge">Vibe Coder</span>
-                        <span class="badge badge-alt">Weeb</span>
-                    </div>
-
-                    <div class="profile-meta">
-                        <div class="meta-row">
-                            <span class="meta-label">Timezone</span>
-                            <span class="meta-value">GMT+8</span>
-                        </div>
-                        <div class="meta-row">
-                            <span class="meta-label">Identity</span>
-                            <span class="meta-value">Under 18, Student</span>
-                        </div>
-                    </div>
-
-                    <hr class="profile-divider" />
-
-                    <div class="profile-columns">
-                        <div class="profile-section">
-                            <h3>Communication</h3>
-                            <p>I may not reply to a simple "hi" or "hello" without any additional message. Please say
-                                what you want directly. There is no need and no point in waiting for my response before
-                                you continue.</p>
-                            <a class="pill pill-alt" href="https://nohello.net/" target="_blank"
-                                rel="noreferrer">nohello.net</a>
-                        </div>
-
-                        <div>
-                            <div class="profile-section">
-                                <h3>About</h3>
-                                <ul class="profile-list">
-                                    <li>Do not call me Seal.</li>
-                                    <li>Introvert (trust)</li>
-                                </ul>
-                            </div>
-
-                            <div class="profile-section">
-                                <h3>Setup</h3>
-                                <p>Windows 11</p>
-                            </div>
-                        </div>
-
-                        <hr class="profile-divider" />
-
-                        <div class="profile-section" style="grid-column: 1 / -1;">
-                            <h3>Also...</h3>
-                            <ul class="profile-list">
-                                <li>The theme of this website came from the anime characters I like.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Seele / yx &copy; 2026</p>
+        <div class="hero-content">
+          <h1 class="hero-name" id="hero-title">Seele<span class="slash">/</span><span class="yx">yx</span></h1>
+          <p class="hero-quote"><span class="dash">—</span>A noob.</p>
+          <p class="hero-tags">Vibe coder<span class="sep">·</span><span class="hot">Weeb</span><span class="sep">·</span>DeepSeek devotee</p>
+          <p class="hero-loadout">
+            <a href="setup.html"><span class="k">Setup</span> · Windows 11, riced.</a><br />
+            <a href="gaming.html"><span class="k">Plays</span> · Roblox / Minecraft</a>
+          </p>
         </div>
-    </footer>
 
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="k">Local time</span>
+            <span class="v"><span data-clock>--:--:--</span> <small>GMT+8</small></span>
+          </div>
+          <div class="stat">
+            <span class="k">Status</span>
+            <span class="v">Under 18 <small>student</small></span>
+          </div>
+        </div>
+
+        <p class="hero-comms">
+          I don’t answer a bare “hi”. Say what you want instead — and don’t wait on me.
+          <a href="https://nohello.net/" target="_blank" rel="noreferrer">nohello.net</a>
+          <span class="seal">Do not call me Seal.</span>
+        </p>
+
+        <aside class="roster" aria-label="Characters">
+          <p class="roster-label">Roster</p>
+          <div class="roster-thumbs">
+            <a class="roster-thumb" href="gaming.html">
+              <span class="pic s" aria-hidden="true"></span>
+              <span class="cap">Shorekeeper</span>
+            </a>
+            <a class="roster-thumb" href="gaming.html">
+              <span class="pic y" aria-hidden="true"></span>
+              <span class="cap">Yangyang</span>
+            </a>
+          </div>
+        </aside>
+
+        <div class="hero-foot">
+          <a class="scroll-cue" href="#dossier">Dossier <span class="arrow" aria-hidden="true">↓</span></a>
+          <div class="foot-contacts">
+            <a href="https://discord.com/users/yx_xd" target="_blank" rel="noreferrer">Discord <b>yx_xd</b></a>
+            <a href="https://www.roblox.com/users/3318383270/profile" target="_blank" rel="noreferrer">Roblox <b>yx_doomspire</b></a>
+            <a href="https://github.com/yxxd254" target="_blank" rel="noreferrer">GitHub <b>yx_xd254</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dossier" id="dossier" aria-label="Dossier">
+      <div class="frame">
+        <div class="dossier-body">
+          <section class="dossier-row" data-reveal>
+            <div class="row-head">
+              <h2>Readme</h2>
+              <span class="leader" aria-hidden="true"></span>
+              <span class="row-index">01</span>
+            </div>
+            <div class="readme">
+              <p class="readme-lead">
+                The theme of this site comes from the characters I like.
+              </p>
+              <dl class="defs">
+                <div><dt>Identity</dt><dd>Under 18, student</dd></div>
+                <div><dt>Setup</dt><dd>Windows 11</dd></div>
+                <div><dt>Disposition</dt><dd>Introvert (trust)</dd></div>
+              </dl>
+            </div>
+          </section>
+
+          <section class="dossier-row" data-reveal style="--d: 60ms">
+            <div class="row-head">
+              <h2>Setup</h2>
+              <span class="leader" aria-hidden="true"></span>
+              <a class="row-action" href="setup.html">Full setup <span aria-hidden="true">→</span></a>
+              <span class="row-index">02</span>
+            </div>
+            <p class="setup-line">Windows 11, riced with komorebi, yasb, WezTerm and nushell. TUI first.</p>
+          </section>
+
+          <section class="dossier-row" data-reveal style="--d: 120ms">
+            <div class="row-head">
+              <h2>Plays</h2>
+              <span class="leader" aria-hidden="true"></span>
+              <span class="row-index">03</span>
+            </div>
+            <div class="plays">
+              <a class="play" href="gaming.html">
+                <span class="name">Roblox</span>
+                <span class="status"><b>Main</b><span class="go" aria-hidden="true">→</span></span>
+              </a>
+              <a class="play" href="gaming.html">
+                <span class="name">Minecraft</span>
+                <span class="status">Occasionally<span class="go" aria-hidden="true">→</span></span>
+              </a>
+            </div>
+          </section>
+
+          <section class="dossier-row" data-reveal style="--d: 180ms">
+            <div class="row-head">
+              <h2>Find me</h2>
+              <span class="leader" aria-hidden="true"></span>
+              <span class="row-index">04</span>
+            </div>
+            <div class="find-grid">
+              <a class="find" href="https://discord.com/users/yx_xd" target="_blank" rel="noreferrer">
+                <span><span class="k">Discord</span><span class="v">yx_xd</span></span>
+                <span class="go" aria-hidden="true">↗</span>
+              </a>
+              <a class="find" href="https://www.roblox.com/users/3318383270/profile" target="_blank" rel="noreferrer">
+                <span><span class="k">Roblox</span><span class="v">yx_doomspire</span></span>
+                <span class="go" aria-hidden="true">↗</span>
+              </a>
+              <a class="find" href="https://github.com/yxxd254" target="_blank" rel="noreferrer">
+                <span><span class="k">GitHub</span><span class="v">yx_xd254</span></span>
+                <span class="go" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </section>
+
+          <div class="colophon">
+            <span>End of dossier.</span>
+            <a href="#top">Back to top ↑</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="frame">
+      <div class="foot-inner">
+        <span>Seele / yx © 2026</span>
+        <div class="foot-links">
+          <a href="setup.html">Setup</a>
+          <a href="gaming.html">Gaming</a>
+          <a href="blogs.html">Blogs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>

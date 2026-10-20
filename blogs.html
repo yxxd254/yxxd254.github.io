@@ -1,85 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile | Blogs</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="main.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Seele / yx — thoughts and stuff." />
+    <meta name="theme-color" content="#04070E" />
+    <title>Seele / yx — Blogs</title>
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
 </head>
-<body class="page">
 
-  <nav class="navbar" aria-label="Primary">
-    <div class="navbar-inner">
-      <div class="navbar-brand">Seele / yx</div>
-      <div class="navbar-links">
-        <a class="navbar-link" href="index.html">Profile</a>
-        <a class="navbar-link" href="skills.html">Skills</a>
-        <a class="navbar-link" href="gaming.html">Gaming</a>
-        <a class="navbar-link is-active" href="blogs.html" aria-current="page">Blogs</a>
-        <a class="navbar-link" href="contact.html">Contact</a>
-      </div>
-    </div>
-  </nav>
+<body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
 
-  <main>
-    <section class="hero reveal">
-      <div class="container">
-        <div class="hero-inner">
-          <h1 class="hero-title">Blogs</h1>
-          <p class="hero-subtitle">Thoughts and stuff.</p>
+    <header class="site-bar">
+        <div class="frame bar-inner">
+            <a class="brand" href="index.html"><span class="diamond" aria-hidden="true"></span>Seele / yx</a>
+            <nav class="nav" aria-label="Primary">
+                <a href="index.html">Profile</a>
+                <a href="setup.html">Setup</a>
+                <a href="gaming.html">Gaming</a>
+                <a href="blogs.html" aria-current="page">Blogs</a>
+            </nav>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="section reveal">
-      <div class="container">
-        <div class="card">
-          <div class="blog-list" id="blog-list">
-            <p class="blog-loading">Loading posts...</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p class="footer-text">Seele / yx &copy; 2026</p>
+    <div class="hud" aria-hidden="true">
+        <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
     </div>
-  </footer>
 
-  <script>
-    async function loadBlogList() {
-      const container = document.getElementById("blog-list");
-      try {
-        const res = await fetch("posts/manifest.json");
-        if (!res.ok) throw new Error("Failed to load manifest");
-        const posts = await res.json();
-        if (!posts.length) {
-          container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
-          return;
-        }
-        posts.sort((a, b) => b.date.localeCompare(a.date));
-        container.innerHTML = posts
-          .map(
-            (post) => `
-            <a class="blog-card" href="post.html?slug=${encodeURIComponent(post.slug)}">
-              <div class="blog-card-header">
-                <span class="blog-date">${post.date}</span>
-              </div>
-              <h3 class="blog-card-title">${post.title}</h3>
-              <p class="blog-card-desc">${post.description}</p>
-            </a>
-          `
-          )
-          .join("");
-      } catch {
-        container.innerHTML = '<p class="blog-empty">Could not load posts.</p>';
-      }
-    }
-    loadBlogList();
-  </script>
+    <div class="rail fixed" aria-hidden="true">
+        <span class="rail-label">Blogs</span>
+        <span class="rail-line"></span>
+        <span class="rail-ticks"></span>
+    </div>
+
+    <main id="main">
+        <div class="frame">
+            <header class="page-head">
+                <div class="head-main">
+                    <h1>Blogs</h1>
+                    <p class="page-sub">Thoughts and stuff.</p>
+                </div>
+                <div class="page-meta">
+                    <span class="k">Section</span><span class="v">04 / 04</span>
+                </div>
+            </header>
+        </div>
+
+        <div class="page-body">
+            <div class="frame">
+                <div class="body-inner">
+                    <div class="blog-list" id="blog-list" aria-live="polite" aria-busy="true">
+                        <div class="blog-item skeleton" aria-hidden="true">
+                            <span class="bar date"></span>
+                            <span><span class="bar tall"></span><span class="bar mid"></span></span>
+                            <span class="bar"></span>
+                        </div>
+                        <div class="blog-item skeleton" aria-hidden="true">
+                            <span class="bar date"></span>
+                            <span><span class="bar tall"></span><span class="bar mid"></span></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="frame">
+            <div class="foot-inner">
+                <span>Seele / yx © 2026</span>
+                <div class="foot-links">
+                    <a href="index.html">Profile</a>
+                    <a href="setup.html">Setup</a>
+                    <a href="gaming.html">Gaming</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (() => {
+            const list = document.getElementById("blog-list");
+            if (!list) return;
+
+            const escapeHtml = (value) =>
+                String(value == null ? "" : value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+
+            const formatDate = (raw) => {
+                const date = new Date(String(raw) + "T00:00:00");
+                if (Number.isNaN(date.getTime())) return escapeHtml(raw);
+                return new Intl.DateTimeFormat("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                })
+                    .format(date)
+                    .toUpperCase();
+            };
+
+            const renderError = () => {
+                list.innerHTML =
+                    '<div class="empty-state">' +
+                    "<p>Could not load posts... Or there is not a single post.</p>" +
+                    '<button class="btn" type="button" id="retry-posts">Retry</button>' +
+                    "</div>";
+                list.setAttribute("aria-busy", "false");
+                const retry = document.getElementById("retry-posts");
+                if (retry) retry.addEventListener("click", loadPosts);
+            };
+
+            async function loadPosts() {
+                list.setAttribute("aria-busy", "true");
+                try {
+                    const response = await fetch("posts/manifest.json", {cache: "no-cache"});
+                    if (!response.ok) throw new Error("Manifest unavailable");
+                    const posts = await response.json();
+
+                    if (!Array.isArray(posts) || posts.length === 0) {
+                        list.innerHTML = '<div class="empty-state"><p>No posts yet.</p></div>';
+                        list.setAttribute("aria-busy", "false");
+                        return;
+                    }
+
+                    posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+                    list.innerHTML = posts
+                        .map(
+                            (post, index) =>
+                                '<a class="blog-item row-in" style="--i:' +
+                                index +
+                                '" href="post.html?slug=' +
+                                encodeURIComponent(post.slug) +
+                                '">' +
+                                '<span class="blog-date">' +
+                                formatDate(post.date) +
+                                "</span>" +
+                                "<span>" +
+                                '<span class="blog-title">' +
+                                escapeHtml(post.title) +
+                                "</span>" +
+                                '<span class="blog-desc">' +
+                                escapeHtml(post.description) +
+                                "</span>" +
+                                "</span>" +
+                                '<span class="blog-arrow" aria-hidden="true">→</span>' +
+                                "</a>"
+                        )
+                        .join("");
+
+                    list.setAttribute("aria-busy", "false");
+                } catch (error) {
+                    renderError();
+                }
+            }
+
+            loadPosts();
+        })();
+    </script>
 </body>
+
 </html>

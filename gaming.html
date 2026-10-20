@@ -4,131 +4,136 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profile | Gaming</title>
+    <meta name="description"
+        content="Games Seele / yx plays: Roblox and Minecraft, with the characters behind the theme." />
+    <meta name="theme-color" content="#04070E" />
+    <title>Seele / yx — Gaming</title>
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="stylesheet" href="styles.css" />
     <script src="main.js" defer></script>
 </head>
 
-<body class="page">
-    <nav class="navbar" aria-label="Primary">
-        <div class="navbar-inner">
-            <span class="navbar-brand">Seele / yx</span>
-            <div class="navbar-links">
-        <a class="navbar-link" href="index.html">Profile</a>
-        <a class="navbar-link" href="skills.html">Skills</a>
-        <a class="navbar-link is-active" href="gaming.html" aria-current="page">Gaming</a>
-        <a class="navbar-link" href="contact.html">Contact</a>
+<body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-bar">
+        <div class="frame bar-inner">
+            <a class="brand" href="index.html"><span class="diamond" aria-hidden="true"></span>Seele / yx</a>
+            <nav class="nav" aria-label="Primary">
+                <a href="index.html">Profile</a>
+                <a href="setup.html">Setup</a>
+                <a href="gaming.html" aria-current="page">Gaming</a>
+                <a href="blogs.html">Blogs</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hud" aria-hidden="true">
+        <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+    </div>
+
+    <div class="rail fixed" aria-hidden="true">
+        <span class="rail-label">Gaming</span>
+        <span class="rail-line"></span>
+        <span class="rail-ticks"></span>
+    </div>
+
+    <main id="main">
+        <div class="frame">
+            <header class="page-head">
+                <div class="head-main">
+                    <h1>Gaming</h1>
+                    <p class="page-sub">Games I play</p>
+                </div>
+                <div class="page-meta">
+                    <span class="k">Section</span><span class="v">03 / 04</span>
+                </div>
+            </header>
+        </div>
+
+        <div class="page-body">
+            <div class="frame">
+                <div class="body-inner">
+
+                    <div class="game-grid">
+                        <section class="game-group" data-reveal>
+                            <div class="group-head">
+                                <h2>Roblox</h2>
+                                <span class="tag">Main</span>
+                            </div>
+                            <p class="game-note">Mostly inactive.</p>
+                            <div class="game-list">
+                                <div class="game-row"><span>Timebomb Duels</span><span
+                                        class="game-status main">Main</span></div>
+                                <div class="game-row"><span>JOMA</span><span class="game-status half">Half
+                                        inactive</span></div>
+                                <div class="game-row"><span>Kohls Admin House X</span><span
+                                        class="game-status">Inactive</span></div>
+                                <div class="game-row"><span>Flee the Facility</span><span
+                                        class="game-status">Inactive</span></div>
+                                <div class="game-row"><span>Forsaken</span><span class="game-status quit">Quit</span>
+                                </div>
+                                <div class="game-row"><span>Build and Battle</span><span
+                                        class="game-status quit">Quit</span></div>
+                                <div class="game-row"><span>Doomspire Brickbattle</span><span
+                                        class="game-status quit">Quit</span></div>
+                            </div>
+                        </section>
+
+                        <section class="game-group" data-reveal style="--d: 60ms">
+                            <div class="group-head">
+                                <h2>Minecraft</h2>
+                                <span class="tag">Occasionally</span>
+                            </div>
+                            <p class="game-note">The most random things...</p>
+                            <div class="game-list">
+                                <div class="game-row"><span>Mechanomania</span><span class="game-status peak">Peak
+                                        Modpack</span></div>
+                                <div class="game-row"><span>Parkour</span><span class="game-status">New</span></div>
+                                <div class="game-row"><span>Glitching</span><span class="game-status">A bit of
+                                        knowledge</span></div>
+                                <div class="game-row"><span>Redstone</span><span class="game-status">At least I
+                                        tried...</span></div>
+                                <div class="game-row"><span>Create (Mod)</span><span class="game-status">Fun mod</span>
+                                </div>
+                        </section>
+                    </div>
+
+                    <div class="plates" data-reveal style="--d: 120ms">
+                        <figure class="plate s">
+                            <img src="shorekeeper%20background.png"
+                                alt="Shorekeeper from Wuthering Waves against a field of blue stars" loading="lazy"
+                                decoding="async" />
+                            <figcaption><span class="n">Shorekeeper</span><span class="t">Peak</span></figcaption>
+                        </figure>
+                        <figure class="plate y">
+                            <img src="yangyang%20background.webp"
+                                alt="Yangyang: Xuanling from Wuthering Waves, surrounded by blue birds" loading="lazy"
+                                decoding="async" />
+                            <figcaption><span class="n">Yangyang</span><span class="t">Peak</span></figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="colophon">
+                        <span>“The theme of this site comes from the characters I like.”</span>
+                        <a href="index.html">Back to profile ↑</a>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </nav>
-
-    <main>
-        <section class="hero reveal">
-            <div class="container">
-                <div class="hero-inner">
-                    <h1 class="hero-title">Gaming</h1>
-                    <p class="hero-subtitle">Games I play</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section reveal">
-            <div class="container">
-                <h2 class="section-title">Games</h2>
-                <div class="grid">
-                    <article class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Roblox</h3>
-                            <span class="chip chip-primary">Main</span>
-                        </div>
-                        <p class="card-subtitle">These games do not interest me anymore...</p>
-
-                        <div class="item-row">
-                            <span class="item-label">Timebomb Duels</span>
-                            <span class="item-detail">Main</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">JOMA</span>
-                            <span class="item-detail">Half Inactive</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Kohls Admin House X</span>
-                            <span class="item-detail">Inactive</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Kohls Admin House</span>
-                            <span class="item-detail">Inactive</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Forsaken</span>
-                            <span class="item-detail">Quit</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Flee the Facility</span>
-                            <span class="item-detail">Inactive</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Build and Battle</span>
-                            <span class="item-detail">Inactive</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Doomspire Brickbattle</span>
-                            <span class="item-detail">Retired</span>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Minecraft</h3>
-                            <span class="chip chip-accent">occasionally</span>
-                        </div>
-                        <p class="card-subtitle">The most random things...</p>
-                        <div class="item-row">
-                            <span class="item-label">Mechanomania</span>
-                            <span class="item-detail">Peak</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Parkour</span>
-                            <span class="item-detail">New</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Glitching</span>
-                            <span class="item-detail">A bit of knowledge</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Redstone</span>
-                            <span class="item-detail">I suck</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Create (Mod)</span>
-                            <span class="item-detail">Fun mod</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-label">Mod development</span>
-                            <span class="item-detail">Vibe coding</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section reveal">
-            <div class="container">
-                <h2 class="section-title">Peak</h2>
-                <div class="grid">
-                    <figure class="card-figure card-shorekeeper">
-                        <figcaption>Shorekeeper</figcaption>
-                    </figure>
-                    <figure class="card-figure card-yangyang">
-                        <figcaption>Yangyang</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Seele / yx &copy; 2026</p>
+    <footer class="site-footer">
+        <div class="frame">
+            <div class="foot-inner">
+                <span>Seele / yx © 2026</span>
+                <div class="foot-links">
+                    <a href="index.html">Profile</a>
+                    <a href="setup.html">Setup</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+            </div>
         </div>
     </footer>
 </body>

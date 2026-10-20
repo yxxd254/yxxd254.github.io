@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Seele / yx's setup — Windows 11 riced with komorebi, yasb, WezTerm and nushell. TUI enthusiast. DeepSeek Harness and dsh-tui." />
+  <meta name="theme-color" content="#04070E" />
+  <title>Seele / yx — Setup</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+<body class="subpage setup-page">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-bar">
+    <div class="frame bar-inner">
+      <a class="brand" href="index.html"><span class="diamond" aria-hidden="true"></span>Seele / yx</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Profile</a>
+        <a href="setup.html" aria-current="page">Setup</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="blogs.html">Blogs</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+  </div>
+
+  <div class="rail fixed" aria-hidden="true">
+    <span class="rail-label">Setup</span>
+    <span class="rail-line"></span>
+    <span class="rail-ticks"></span>
+  </div>
+
+  <main id="main">
+    <div class="frame">
+      <header class="page-head">
+        <div class="head-main">
+          <h1>Setup</h1>
+          <p class="page-sub">Windows 11, riced. TUI enthusiast.</p>
+        </div>
+        <div class="page-meta">
+          <span class="k">Section</span><span class="v">02 / 04</span>
+        </div>
+      </header>
+    </div>
+
+    <div class="page-body">
+      <div class="frame">
+        <div class="body-inner">
+
+          <section class="skill-group" data-reveal>
+            <div class="group-head">
+              <h2>Machine</h2>
+              <span class="group-note">Windows 11.</span>
+              <span class="tag">Riced</span>
+            </div>
+            <div class="skill-rows">
+              <div class="skill-row">
+                <span class="idx">01</span>
+                <span class="name">komorebi</span>
+                <span class="val">Tiling</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">02</span>
+                <span class="name">yasb</span>
+                <span class="val">Status bar</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">03</span>
+                <span class="name">WezTerm</span>
+                <span class="val">Terminal</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">04</span>
+                <span class="name">nushell</span>
+                <span class="val">Shell</span>
+              </div>
+            </div>
+          </section>
+
+          <figure class="setup-map" data-reveal style="--d: 60ms" aria-label="Schematic of the desktop: a WezTerm window over the character wallpaper, with the yasb bar along the bottom edge">
+            <div class="map-desktop">
+              <div class="map-window">
+                <div class="win-bar">
+                  <span class="win-tab on">1</span>
+                  <span class="win-tab">~</span>
+                  <span class="win-plus">+</span>
+                  <span class="win-title">wezterm</span>
+                  <span class="win-nu">nushell</span>
+                </div>
+                <div class="win-term">
+                  <p class="starship"><span class="u">Administrator</span> in <b>~/profile</b> on <b>master</b></p>
+                  <p><span class="prompt">›</span> <span class="cmd">dsh</span></p>
+                  <p class="pane-dim">DeepSeek Harness</p>
+                  <p><span class="prompt">›</span> <span class="cursor" aria-hidden="true"></span></p>
+                </div>
+              </div>
+              <div class="map-yasb">
+                <span class="ws on">1</span>
+                <span class="dock" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <span class="bar-date" data-date>20-10-2026 · TUE</span>
+                <span class="yasb-clock" data-clock>--:--:--</span>
+              </div>
+            </div>
+            <figcaption class="map-cap">
+              <span>komorebi — tiling</span>
+              <span>yasb — bottom bar</span>
+            </figcaption>
+          </figure>
+
+          <section class="skill-group" data-reveal style="--d: 120ms">
+            <div class="group-head">
+              <h2>Terminal</h2>
+              <span class="group-note">TUI first.</span>
+              <span class="tag">TUI</span>
+            </div>
+            <p class="skill-quote"><span class="q">“</span>TUI enthusiast.<span class="q">”</span></p>
+          </section>
+
+          <section class="skill-group" data-reveal style="--d: 180ms">
+            <div class="group-head">
+              <h2>Agents</h2>
+              <span class="group-note">What I run</span>
+              <span class="tag">Current</span>
+            </div>
+            <div class="skill-rows">
+              <div class="skill-row">
+                <span class="idx">01</span>
+                <span class="name">DeepSeek Harness <span class="name-sub">(DSH)</span></span>
+                <span class="val">In use</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">02</span>
+                <span class="name">dsh-tui</span>
+                <span class="val">In use</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">03</span>
+                <span class="name">Hermes Agent</span>
+                <span class="val retired">Retired</span>
+              </div>
+              <div class="skill-row">
+                <span class="idx">04</span>
+                <span class="name">OpenCode</span>
+                <span class="val retired">Retired</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="skills-readout" data-reveal style="--d: 240ms">
+            <div>
+              <span class="k">Window manager</span>
+              <span class="v">komorebi</span>
+            </div>
+            <div>
+              <span class="k">Shell</span>
+              <span class="v">nushell</span>
+            </div>
+            <div>
+              <span class="k">Terminal</span>
+              <span class="v">WezTerm</span>
+            </div>
+            <div>
+              <span class="k">Agents</span>
+              <span class="v">DSH · dsh-tui</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="frame">
+      <div class="foot-inner">
+        <span>Seele / yx © 2026</span>
+        <div class="foot-links">
+          <a href="index.html">Profile</a>
+          <a href="gaming.html">Gaming</a>
+          <a href="blogs.html">Blogs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

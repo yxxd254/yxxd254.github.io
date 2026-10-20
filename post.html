@@ -3,145 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile | Blog Post</title>
+  <meta name="description" content="A post by Seele / yx." />
+  <meta name="theme-color" content="#04070E" />
+  <title>Seele / yx — Blog Post</title>
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="styles.css" />
   <script src="main.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    const colorMap = {
-      'pink': 'primary',
-      'pink-light': 'primary-light',
-      'teal': 'accent',
-      'white': 'text',
-      'gray': 'text-muted'
-    };
-    marked.use({
-      extensions: [
-        {
-          name: "color",
-          level: "inline",
-          start(src) { return src.match(/:[\w-]+\[/)?.index; },
-          tokenizer(src) {
-            const match = src.match(/^:([\w-]+)\[(.+?)\]/);
-            if (!match) return;
-            const colorName = match[1];
-            if (!colorMap[colorName]) return;
-            const text = marked.parseInline(match[2]);
-            return { type: "color", raw: match[0], color: colorName, text: text };
-          },
-          renderer(token) {
-            return '<span style="color: var(--' + colorMap[token.color] + ')">' + token.text + '</span>';
-          },
-        },
-        {
-          name: "small",
-          level: "block",
-          start(src) { return src.indexOf("-#"); },
-          tokenizer(src) {
-            const match = src.match(/^-# (.+?)(?:\n|$)/);
-            if (!match) return;
-            const text = marked.parseInline(match[1]);
-            return { type: "small", raw: match[0], text: text };
-          },
-          renderer(token) {
-            return '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5em">' + token.text + '</p>';
-          },
-        },
-      ],
-    });
-  </script>
 </head>
-<body class="page">
+<body class="subpage">
+  <a class="skip" href="#main">Skip to content</a>
 
-  <nav class="navbar" aria-label="Primary">
-    <div class="navbar-inner">
-      <div class="navbar-brand">Seele / yx</div>
-      <div class="navbar-links">
-        <a class="navbar-link" href="index.html">Profile</a>
-        <a class="navbar-link" href="skills.html">Skills</a>
-        <a class="navbar-link" href="gaming.html">Gaming</a>
-        <a class="navbar-link is-active" href="blogs.html" aria-current="page">Blogs</a>
-        <a class="navbar-link" href="contact.html">Contact</a>
-      </div>
+  <header class="site-bar">
+    <div class="frame bar-inner">
+      <a class="brand" href="index.html"><span class="diamond" aria-hidden="true"></span>Seele / yx</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Profile</a>
+        <a href="setup.html">Setup</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="blogs.html" aria-current="page">Blogs</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <main>
-    <section class="hero reveal">
-      <div class="container">
-        <div class="hero-inner">
-          <h1 class="hero-title" id="post-title">Loading...</h1>
-          <p class="blog-date" id="post-date"></p>
+  <div class="hud" aria-hidden="true">
+    <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+  </div>
+
+  <div class="rail fixed" aria-hidden="true">
+    <span class="rail-label">Blogs</span>
+    <span class="rail-line"></span>
+    <span class="rail-ticks"></span>
+  </div>
+
+  <main id="main">
+    <div class="frame">
+      <header class="page-head post-head">
+        <div class="head-main">
+          <h1 id="post-title">Loading...</h1>
+          <div class="post-meta">
+            <a class="back" href="blogs.html">← Blogs</a>
+            <span id="post-date"></span>
+          </div>
         </div>
-      </div>
-    </section>
+        <div class="page-meta">
+          <span class="k">Section</span><span class="v">04 / 04</span>
+        </div>
+      </header>
+    </div>
 
-    <section class="section reveal">
-      <div class="container">
-        <div class="card">
-          <div class="blog-post-body" id="post-body">
-            <p class="blog-loading">Loading post...</p>
+    <div class="page-body">
+      <div class="frame">
+        <div class="body-inner">
+          <div class="post-body" id="post-body">
+            <p class="blog-loading">Loading post…</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <a class="back-link" href="blogs.html">Back to Blogs</a>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="footer-text">Seele / yx &copy; 2026</p>
+  <footer class="site-footer">
+    <div class="frame">
+      <div class="foot-inner">
+        <span>Seele / yx © 2026</span>
+        <div class="foot-links">
+          <a href="index.html">Profile</a>
+          <a href="setup.html">Setup</a>
+          <a href="gaming.html">Gaming</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
-    async function loadPost() {
-      const params = new URLSearchParams(window.location.search);
-      const slug = params.get("slug");
+    (() => {
       const titleEl = document.getElementById("post-title");
       const dateEl = document.getElementById("post-date");
       const bodyEl = document.getElementById("post-body");
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
+
+      const colorMap = {
+        blue: "blue",
+        ice: "ice",
+        gold: "gold",
+        dim: "dim",
+        pink: "blue",
+        "pink-light": "ice",
+        teal: "ice",
+        white: "ink",
+        gray: "dim",
+      };
+
+      if (window.marked) {
+        marked.use({
+          extensions: [
+            {
+              name: "color",
+              level: "inline",
+              start(src) {
+                return src.match(/:[\w-]+\[/)?.index;
+              },
+              tokenizer(src) {
+                const match = src.match(/^:([\w-]+)\[(.+?)\]/);
+                if (!match) return;
+                const colorName = match[1];
+                if (!colorMap[colorName]) return;
+                const text = marked.parseInline(match[2]);
+                return { type: "color", raw: match[0], color: colorName, text: text };
+              },
+              renderer(token) {
+                return '<span style="color: var(--' + colorMap[token.color] + ')">' + token.text + "</span>";
+              },
+            },
+            {
+              name: "small",
+              level: "block",
+              start(src) {
+                return src.indexOf("-#");
+              },
+              tokenizer(src) {
+                const match = src.match(/^-# (.+?)(?:\n|$)/);
+                if (!match) return;
+                const text = marked.parseInline(match[1]);
+                return { type: "small", raw: match[0], text: text };
+              },
+              renderer(token) {
+                return '<p class="post-small">' + token.text + "</p>";
+              },
+            },
+          ],
+        });
+      }
+
+      const formatDate = (raw) => {
+        const date = new Date(String(raw) + "T00:00:00");
+        if (Number.isNaN(date.getTime())) return String(raw || "");
+        return new Intl.DateTimeFormat("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })
+          .format(date)
+          .toUpperCase();
+      };
+
+      const showError = (title, detail) => {
+        titleEl.textContent = title;
+        document.title = "Seele / yx — " + title;
+        dateEl.textContent = "";
+        bodyEl.innerHTML =
+          '<div class="post-error">' +
+          "<p>" +
+          detail +
+          "</p>" +
+          '<a class="row-action" href="blogs.html">Back to blogs <span aria-hidden="true">→</span></a>' +
+          "</div>";
+      };
 
       if (!slug) {
-        titleEl.textContent = "Post not found";
-        bodyEl.innerHTML = '<p>No post specified.</p>';
+        showError("Post not found", "No post specified. Pick one from the archive.");
         return;
       }
 
-      try {
-        const [manifestRes, mdRes] = await Promise.all([
-          fetch("posts/manifest.json"),
-          fetch("posts/" + slug + ".md"),
-        ]);
+      (async () => {
+        try {
+          const [manifestResponse, mdResponse] = await Promise.all([
+            fetch("posts/manifest.json", { cache: "no-cache" }),
+            fetch("posts/" + encodeURIComponent(slug) + ".md", { cache: "no-cache" }),
+          ]);
 
-        if (!mdRes.ok) throw new Error("Post not found");
+          if (!mdResponse.ok) {
+            showError(
+              "Could not load this post",
+              "The archive lists it, but the file is not there yet. Pick another entry or come back later."
+            );
+            return;
+          }
 
-        const manifest = await manifestRes.json();
-        const post = manifest.find((p) => p.slug === slug);
-        const md = await mdRes.text();
+          const manifest = manifestResponse.ok ? await manifestResponse.json() : [];
+          const post = Array.isArray(manifest) ? manifest.find((item) => item.slug === slug) : null;
+          const markdown = await mdResponse.text();
 
-        if (post) {
-          titleEl.textContent = post.title;
-          document.title = "Profile | " + post.title;
-          dateEl.textContent = post.date;
-        } else {
-          titleEl.textContent = slug;
-          dateEl.textContent = "";
+          if (post) {
+            titleEl.textContent = post.title;
+            dateEl.textContent = formatDate(post.date);
+            document.title = "Seele / yx — " + post.title;
+          } else {
+            titleEl.textContent = slug;
+            document.title = "Seele / yx — " + slug;
+          }
+
+          if (window.marked) {
+            bodyEl.innerHTML = marked.parse(markdown);
+          } else {
+            bodyEl.innerHTML = "";
+            const pre = document.createElement("pre");
+            pre.textContent = markdown;
+            bodyEl.appendChild(pre);
+          }
+        } catch (error) {
+          showError(
+            "Could not load this post",
+            "The archive lists it, but the file is not there yet. Pick another entry or come back later."
+          );
         }
-
-        bodyEl.innerHTML = marked.parse(md);
-      } catch {
-        titleEl.textContent = "Post not found";
-        dateEl.textContent = "";
-        bodyEl.innerHTML = '<p>Could not load this post.</p>';
-      }
-    }
-    loadPost();
+      })();
+    })();
   </script>
 </body>
 </html>
